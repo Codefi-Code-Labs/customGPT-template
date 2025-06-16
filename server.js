@@ -30,6 +30,10 @@ app.get('/getmemory', (req, res) => {
   res.json({ key, value: memory[key] });
 });
 
+// GET /listmemory
+app.get('/listmemory', (req, res) => {
+  res.json({ memory });
+});
 
 app.listen(3000, () => {
   console.log('Memory API running on http://localhost:3000');

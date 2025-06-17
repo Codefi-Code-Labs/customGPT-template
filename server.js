@@ -11,12 +11,14 @@ app.use(bodyParser.json());
 
 app.post('/savememory', (req, res) => {
   const { key, value } = req.body;
+  console.log('Saving memory:', key, value); // <-- LOG here!
   if (!key || !value) {
     return res.status(400).json({ error: 'Missing key or value' });
   }
   memory[key] = value; // Save in memory (use DB for persistence)
   res.json({ status: 'success', key, value });
 });
+
 
 // GET /getmemory?key=yourKey
 app.get('/getmemory', (req, res) => {
@@ -38,3 +40,5 @@ app.get('/listmemory', (req, res) => {
 app.listen(3000, () => {
   console.log('Memory API running on http://localhost:3000');
 });
+
+
